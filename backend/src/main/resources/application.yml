@@ -1,0 +1,29 @@
+debug: true
+server:
+  port: 4000
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/saltdb
+    username: salt
+    password: secret
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: postgresql
+  sql:
+    init:
+      data-locations: classpath:data.sql
+      platform: postgresql
+      mode: always
+    output:
+      ansi:
+        enabled: always
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
