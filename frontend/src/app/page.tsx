@@ -1,6 +1,7 @@
 "use client"
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useQuery } from "@tanstack/react-query"
 
 export default function Home() {
   const [hello, setHello] = useState<string>("")
@@ -9,6 +10,8 @@ export default function Home() {
     setHello(response.data)
   }
  useEffect(()=> {fetchHello();}, [])
+
+
   
  return (
     <main>
