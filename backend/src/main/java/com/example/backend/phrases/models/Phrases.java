@@ -1,5 +1,6 @@
 package com.example.backend.phrases.models;
 
+import com.example.backend.user.model.UserName;
 import jakarta.persistence.*;
 
 @Entity

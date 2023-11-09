@@ -1,31 +1,49 @@
 package com.example.backend.user.model;
 
+import com.example.backend.phrases.models.Phrases;
 import jakarta.persistence.*;
 
 @Entity
 public class SavedPhrases {
 
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
-    @Column(columnDefinition = "text")
-    private String savedPhrase;
+    public Phrases getPhrases() {
+        return phrases;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "userName_id")
-    private UserName userName;
+    public void setPhrases(Phrases phrases) {
+        this.phrases = phrases;
+    }
 
-    public SavedPhrases(){}
-    public SavedPhrases(long id, UserName userName) {
-        this.id = id;
+    public UserName getUserName() {
+        return userName;
+    }
+
+    public void setUserName(UserName userName) {
         this.userName = userName;
     }
 
-    public long getId() {
+    @ManyToOne
+    Phrases phrases;
+
+    @ManyToOne
+     UserName userName;
+
+    public SavedPhrases(){}
+    public SavedPhrases(String id, UserName userName, Phrases phrases) {
+        this.id = id;
+        this.userName = userName;
+        this.phrases = phrases;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

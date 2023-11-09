@@ -10,6 +10,7 @@ import java.util.List;
 public class PhrasesService {
     private final PhrasesRepository repo;
 
+
     public PhrasesService(PhrasesRepository repo){
         this.repo = repo;
     }
@@ -21,4 +22,6 @@ public class PhrasesService {
     public List<Phrases> getAllPhrases(){
         return repo.findAll();
     }
+
+
 }
