@@ -1,5 +1,6 @@
 "use client";
 
+import FormalCard from "@/components/formal-card/FormalCard";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -14,6 +15,8 @@ const Page = () => {
   const [phrases, setPhrases] = useState<Phrase[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState();
+  const [selectedPhrase, setSelectedPhrase] = useState<Phrase | null>(null);
+  const [selected, setSelected] = useState<boolean>(false);
 
   const fetchPhrases = async () => {
     const response = await axios.get("http://localhost:4000/phrases");
@@ -29,8 +32,16 @@ const Page = () => {
     return <h1>Loading...</h1>;
   }
 
+  const handleSelect = (phrase: Phrase) => {
+    if (selectedPhrase && selectedPhrase.id === phrase.id) {
+      setSelectedPhrase(null);
+      setSelected(false)
+    } else {
+      setSelectedPhrase(phrase);
+      setSelected(true);
+  }};
+
   return (
-    <>
       <main className="flex h-[calc(100vh-3.5rem)] flex-col items-center justify-between p-24  bg-orange-50">
         <button className="fixed top-5 right-8 px-2 py-1 rounded hover:bg-red-500 hover:text-orange-50  text-orange-950 ">
           <Link href="/saved">Saved</Link>
@@ -40,16 +51,20 @@ const Page = () => {
             How do I say this <br />
             <b className="tracking-widest">professionally</b>?
           </h1>
-          {phrases.map((phrase) => {
-            return (
-              <button className=" inline-block" key={phrase.id}>
+          {phrases.map((phrase) => 
+          <>
+              <button
+                className=" inline-block"
+                key={phrase.id}
+                onClick={() => handleSelect(phrase)}
+              >
                 {phrase.informalPhrase}
               </button>
-            );
-          })}
+              {selected && <FormalCard formalPhrase={phrase.formalPhrase}/>}
+              </>
+          )}
         </section>
       </main>
-    </>
   );
 };
 
