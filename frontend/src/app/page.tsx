@@ -27,7 +27,7 @@ export default function Home() {
           <form className=" flex flex-col justify-center">
           <input className=" w-64 h-10 rounded border-orange-950 border-2 text-orange-950/70 mb-6" placeholder=" Username"></input>
           <button className=" px-2 py-1 rounded bg-red-500 text-orange-50  hover:bg-orange-950 mx-8">
-            <Link href="/saved">START</Link>
+            <Link href="/phrases">START</Link>
           </button>
           </form>
         </div>
