@@ -1,13 +1,15 @@
 "use client";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useRouter } from 'next/navigation'
 
-import Link from "next/link";
+
 
 export default function Home() {
   const [formData, setFormData] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [user, setUser] = useState<string>("");
+  const router = useRouter()
 
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData(e.target.value);
@@ -23,11 +25,20 @@ export default function Home() {
 
   const handlePost = async (formData: String) => {
     try {
-      const response = await axios.post("", { //finish the post
-        name: formData
-      });
-
-      if (response.status === 200) {
+      const response = await axios.post(
+        "http://localhost:4000/users",
+        {
+          name: formData,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(formData);
+      console.log(response.status);
+      if (response.status === 201) {
         const data = response.data;
         const newUser = data.username;
         setUser(newUser);
@@ -37,7 +48,9 @@ export default function Home() {
     }
   };
 
-  localStorage.setItem(user, user) //correct this
+  useEffect(() => {
+    localStorage.setItem("username", user);
+  }, [user]);
 
   return (
     <>
@@ -57,8 +70,10 @@ export default function Home() {
               onChange={handleUsernameChange}
               placeholder=" Username"
             ></input>
-            <button className=" px-2 py-1 rounded bg-red-500 text-orange-50  hover:bg-orange-950 mx-8">
-              <Link href="/phrases">START</Link>
+            <button 
+            onClick={() => router.push('/phrases')}
+            className=" px-2 py-1 rounded bg-red-500 text-orange-50  hover:bg-orange-950 mx-8">
+             START
             </button>
           </form>
         </div>
