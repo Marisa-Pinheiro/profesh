@@ -14,14 +14,19 @@ type Phrase = {
 const Page = () => {
   const [phrases, setPhrases] = useState<Phrase[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState();
+  const [error, setError] = useState<boolean>(false); //deal with the error message
   const [selectedPhrase, setSelectedPhrase] = useState<Phrase | null>(null);
   const [selected, setSelected] = useState<boolean>(false);
 
   const fetchPhrases = async () => {
+    try{
     const response = await axios.get("http://localhost:4000/phrases");
     setPhrases(response.data);
     setLoading(false);
+    } catch(error){
+      setError(true);
+      throw new Error();
+    }
   };
 
   useEffect(() => {
@@ -30,6 +35,10 @@ const Page = () => {
 
   if (loading) {
     return <h1>Loading...</h1>;
+  }
+
+  if(error){
+    return <h1>Oh-oh... 503 Service Unavailable</h1>;
   }
 
   const handleSelect = (phrase: Phrase) => {
