@@ -1,5 +1,5 @@
 INSERT INTO public.phrases(informal_phrase,formal_phrase) VALUES ('That sounds like a you problem.','I understand that falls within your scope of responsibility, but I’m happy to support where it makes sense.');
-INSERT INTO public.phrases(informal_phrase,formal_phrase) VALUES ('Thanks, I didn’t ask for your advice.','Thank for sharing your thoughts, I keep them in mind.');
+INSERT INTO public.phrases(informal_phrase,formal_phrase) VALUES ('Thanks, I didn’t ask for your advice.','Thank for sharing your thoughts, I''ll keep them in mind.');
 INSERT INTO public.phrases(informal_phrase,formal_phrase) VALUES ('That’s not my job.','This falls outside of my responsibilities but I would be happy to connect you with someone who can help.');
 INSERT INTO public.phrases(informal_phrase,formal_phrase) VALUES ('I told you so.','As I mentioned earlier, it appears my initial concerns were justified. How do you plan to resolve this?');
 INSERT INTO public.phrases(informal_phrase,formal_phrase) VALUES ('That meeting sounds like a waste of my time.','I''m concerned that the upcoming meeting may not be the most productive use of my time.');
