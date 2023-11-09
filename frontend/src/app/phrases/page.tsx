@@ -1,9 +1,21 @@
 "use client";
 
+import axios from "axios";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
+  const [hello, setHello] = useState<string>("");
+  const fetchHello = async () => {
+    let response = await axios.get("http://localhost:4000/hello");
+    setHello(response.data);
+  };
+  useEffect(() => {
+    fetchHello();
+  }, []);
+
+
+  
   return (
     <>
       <main className="flex h-[calc(100vh-3.5rem)] flex-col items-center justify-between p-24  bg-orange-50">
