@@ -14,7 +14,7 @@ export type Phrase = {
 const Page = () => {
   const [phrases, setPhrases] = useState<Phrase[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false); //deal with the error message
+  const [error, setError] = useState<boolean>(false);
 
   const fetchPhrases = async () => {
     try{

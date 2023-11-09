@@ -28,7 +28,7 @@ export default function Home() {
       const response = await axios.post(
         "http://localhost:4000/users",
         {
-          name: formData,
+          userName: formData,
         },
         {
           headers: {
@@ -36,11 +36,10 @@ export default function Home() {
           },
         }
       );
-      console.log(formData);
-      console.log(response.status);
       if (response.status === 201) {
         const data = response.data;
-        const newUser = data.username;
+        const newUser = data.id;
+        console.log(newUser);
         setUser(newUser);
       }
     } catch (error) {
@@ -49,7 +48,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    localStorage.setItem("username", user);
+    localStorage.setItem("id", user );
   }, [user]);
 
   return (

@@ -26,7 +26,7 @@ export default function InformalButton({
       <button className=" inline-block" key={id} onClick={() => {handleSelect({id,informalPhrase,formalPhrase})}}>
         {informalPhrase}
       </button>
-      {selected && <FormalCard formalPhrase={formalPhrase} />}
+      {selected && <FormalCard formalPhrase={formalPhrase} id={id} informalPhrase={informalPhrase} />}
     </>
   );
 }
