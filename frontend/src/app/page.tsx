@@ -53,10 +53,10 @@ export default function Home() {
 
   return (
     <>
-      <main className="flex h-[calc(100vh-3.5rem)] flex-col items-center justify-between p-24 bg-orange-50">
+      <main className="flex h-[calc(100vh-3.5rem)] flex-col items-center justify-between p-24 bg-indigo-950">
         <div className=" h-96 flex flex-col items-center">
-          <h1 className="text-6xl font-medium pb-4">ProFesh</h1>
-          <h2 className="text-xl font-light pb-6">
+          <h1 className="text-6xl font-medium pb-4 text-slate-200 mt-20">ProFesh</h1>
+          <h2 className="text-xl font-light pb-6 text-slate-200">
             <i>Say it professionally.</i>
           </h2>
           <form
@@ -65,13 +65,13 @@ export default function Home() {
           >
             <input
               type="text"
-              className=" w-64 h-10 rounded border-orange-950 border-2 text-orange-950/70 mb-6"
+              className=" w-64 h-10 rounded bg-slate-300 border-2 text-slate-800/70 mb-6"
               onChange={handleUsernameChange}
               placeholder=" Username"
             ></input>
             <button 
             onClick={() => router.push('/phrases')}
-            className=" px-2 py-1 rounded bg-red-500 text-orange-50  hover:bg-orange-950 mx-8">
+            className=" px-2 py-1 rounded bg-pink-600 text-slate-200  hover:bg-pink-800 mx-8">
              START
             </button>
           </form>

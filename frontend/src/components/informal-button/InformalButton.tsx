@@ -23,7 +23,7 @@ export default function InformalButton({
 
   return (
     <>
-      <button className=" inline-block" key={id} onClick={() => {handleSelect({id,informalPhrase,formalPhrase})}}>
+      <button className=" inline-block text-left mb-2 pl-2 py-2 rounded text-indigo-950 bg-slate-200 hover:bg-pink-500 text-sm" key={id} onClick={() => {handleSelect({id,informalPhrase,formalPhrase})}}>
         {informalPhrase}
       </button>
       {selected && <FormalCard formalPhrase={formalPhrase} id={id} informalPhrase={informalPhrase} />}
